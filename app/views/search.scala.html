@@ -1,0 +1,79 @@
+
+@main("Welcome to Play") {
+
+    <body>
+
+        <input id="user" name="user" type="text">
+        <div id="list"></div>
+      <!--  <div class="container">
+            <div class="param">
+
+                    <div class="form-group">
+                        <div class="col-xs-5">
+
+                            <input class="form-control" id="ex3" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-5">
+
+                            <input class="form-control" id="user" type="text">
+                            <div id="list"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+                <br>
+            </div>
+
+        </div>-->
+    </body>
+    <script>
+       /* $(document).ready(function () {
+            $('#user').keyup(function () {
+                var query=$(this).val();
+                //alert(query);
+                if(query !='')
+                {
+                    $.ajax({
+                       url:"/dosearch",
+                        dataType:"json",
+                        data:{query:query},
+                        success:function(data) {
+                            //alert(data.firstname);
+                           // d=JSON.parse(data);
+                            $('#list').fadeIn();
+                            $('#list').html(query);
+                        }
+                    });
+                }
+            });
+        });*/
+             $("#user").autocomplete({
+
+                source: function (request,response) {
+                    $.ajax({
+
+                        url: "/dosearch",
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function(data){
+                            response($.map(data,function(item){
+                                return{
+                                    label : item.firstname,
+                                    value : item.firstname
+                                }
+
+                            }));
+                        }
+                    });
+                },
+                minLength: 2
+
+            });
+    </script>
+}

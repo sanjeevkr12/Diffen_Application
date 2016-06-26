@@ -1,0 +1,29 @@
+.navbar
+{
+	background-color: #CC3333;
+	margin:-2px;
+	padding-left:50px;
+}
+.jumbotron
+{
+	margin: 0;
+}
+p.subheader
+{
+	color: red;
+}
+h1.header
+{
+	color:green;
+}
+.jumbotron.image
+{
+	background-image: url("images/banner.jpg");
+}
+div.param
+{
+	border: 1px solid black;
+	border-radius: 25px;
+	border-color: blue;
+	margin-left:10px;
+}

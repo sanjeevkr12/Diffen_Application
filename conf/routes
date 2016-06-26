@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET     /addactor                   controllers.Application.addactor()
+POST    /doAddactor                 controllers.Application.doAddactor()
+GET    /displayactor               controllers.Application.displayactor()
+
+
+##comapere
+GET    /addcomapre                 controllers.Application.addcompareactor()
+POST   /docompare                   controllers.Application.docompare()
+GET     /editactor                  controllers.Application.editactor()
+POST    /updateactor                controllers.Application.updateactor()
+
+# AutoSearchComplete
+GET     /dosearch               controllers.FindActor.dosearch(term:String)
+
+#View ActorProfile
+GET     /actor/actorprofile     controllers.Actorprofile.actorprofile()
+
+#View Actor Rating
+GET    /actor/actorviewrate    controllers.ActorRating.displayrating()
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

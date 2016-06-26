@@ -1,0 +1,98 @@
+@(list : List[models.Addactor])
+
+
+@main("Welcome to Play") {
+
+    <body>
+            <!--Page Header--->
+
+        <div class="jumbotron image">
+            <div class="container">
+                <h1 class="header">Welcome to Diffen</h1>
+                <p class="subheader">We believe that making the right choices should be easier than it is today. We believe that this is possible with information that is unbiased, free, concise and easy to understand. Diffen aims to provide a one-stop shop for such information.</p>
+            </div>
+        </div>
+
+            <!-- NavBar Starting-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                    <!--<div class="navbar-header">
+      <a class="navbar-brand" href="#">Diffen</a>
+    </div>-->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">HOME</a></li>
+                    <li><a href="#">SCIENCE</a></li>
+                    <li><a href="#">TECHNOLOGY</a></li>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">FOOD</a></li>
+                    <li><a href="#">BUSINESS</a></li>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Operation
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/addactor">AddActor</a></li>
+                                <li><a href="/displayactor">ShowActor</a></li>
+                                <li><a href="/addcomapre ">AddCompareActor</a></li>
+                                <li><a href="/actor/actorprofile ">ViewActorProfile</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">USERACCOUNT
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="text-center">
+                <h1>Get ready to compare anything.</h1>
+                <p class="lead">Suppose you are trying to decide whether to buy a Canon Powershot SD1300 or SD1400.<br>You read the reviews and lose your way reading the specifications.</p>
+            </div>
+
+        </div><!-- /.container -->
+
+
+
+        <div class="container">
+            <h2>Update Actor Info.</h2>
+            @for(actor <- list){
+        <form role="form" action="@routes.Application.updateactor()" enctype="multipart/form-data" method="post">
+            <!--hidden passing parameter actorid-->
+            <input type="hidden" name="aid" id="aid" value="@actor.actorid"/>
+            <div class="form-group">
+                <label for="firstname">FirstName:</label>
+                <input type="text" class="form-control" value="@actor.firstname" name="firstname" id="firstname">
+            </div>
+            <div class="form-group">
+                <label for="lastname">LastName:</label>
+                <input type="text" class="form-control" value="@actor.lastname" name="lastname" id="lastname">
+            </div>
+            <div class="form-group">
+                <label for="upload">Upload photo:</label>
+                <input type="file" class="form-control" value="@actor.photo" name="upload" id="upload">
+            </div>
+            <div class="form-group">
+                <label for="url">Website URL:</label>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3">https://example.com/</span>
+                    <input type="text" class="form-control" value="@actor.url" name="url" id="url" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+            }
+        </div>
+        <br>
+        <br>
+    </body>
+}
